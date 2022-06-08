@@ -3,8 +3,8 @@ const router = express.Router()
 
 const Itinerary = require('../models/itinerary')
 
-router.get('/:id', (req, res) => {
-  Itinerary.findAll(id)
+router.get('/', (req, res) => {
+  Itinerary.findAll()
   .then(itineraries => res.json(itineraries))
 })
 

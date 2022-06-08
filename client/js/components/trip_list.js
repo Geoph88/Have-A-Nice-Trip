@@ -1,12 +1,12 @@
-function renderTripList() {
+function renderTripList(userId) {
   document.querySelector('#page').innerHTML = `
     <section class="trip-list">
-      ${renderTrips()}
+      ${renderTrips(userId)}
     </section>
   `
 }
 
-function renderTrips() {
+function renderTrips(userId) {
 
   if (state.loggedInUserName) {
     console.log('logged in')
@@ -69,7 +69,7 @@ function editTrip(event) {
     .then(res => res.json())
     .then(trip => {
       state.trips.push(trip)
-      renderTripList()
+      renderTripList(userId)
     })
 }
 
@@ -82,6 +82,6 @@ function deleteTrip(event) {
   })
     .then(() => {
       state.trips = state.trips.filter(t => t.id != tripId)
-      renderTripList()
+      renderTripList(userId)
     })
 }

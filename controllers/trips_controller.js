@@ -4,14 +4,16 @@ const router = express.Router()
 const Trip = require('../models/trip')
 
 router.get('/', (req, res) => {
-  Trip.findAll()
+  const userId = req.session.userId
+  Trip.findAll(userId)
   .then(trips => res.json(trips)) 
 })
 
-router.post('/', (req, res) => {
+router.post('/:id', (req, res) => {
+  const userId = req.session.userId
   const {name, start_date, end_date} = req.body
   Trip
-  .create(name, start_date, end_date)
+  .create(userId, name, start_date, end_date)
   .then(trip => res.json(trip))
 })
 
