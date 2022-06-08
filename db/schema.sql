@@ -30,3 +30,5 @@ CREATE TABLE users(
 SELECT users.id AS user_id, itineraries.start_location, itineraries.end_location, itineraries.start_date, itineraries.end_date, itineraries.start_time, itineraries.end_time, itineraries.activities, itineraries.notes, itineraries.checklist FROM itineraries INNER JOIN users ON users.id = itineraries.id;
 
 SELECT users.id AS user_id, trips.name FROM trips INNER JOIN users ON users.id = trips.id;
+
+SELECT trips.id AS trips_id, trips.name, itineraries.start_location, itineraries.end_location, itineraries.start_date, itineraries.end_date, itineraries.start_time, itineraries.end_time, itineraries.activities, itineraries.notes, itineraries.checklist FROM itineraries INNER JOIN trips ON trips.id = itineraries.id;

@@ -38,7 +38,7 @@ function signUp(event) {
     if (res.error) {
       console.log(res.error)
     } else {
-      state.loggedInUserName = res
+      state.loggedInUserName, state.loggedInUserName = res
       renderTripList()
     }
   })

@@ -16,7 +16,7 @@ function renderItinerary() {
       <span>${itinerary.start_date}</span>
       <span>${itinerary.end_date}</span>
       <span>${itinerary.start_time}</span>
-      <span>${itinerary.end_date}</span>
+      <span>${itinerary.end_time}</span>
       <p>${itinerary.end_location}</p>
       <article>
         <p>${itinerary.activities}</p>

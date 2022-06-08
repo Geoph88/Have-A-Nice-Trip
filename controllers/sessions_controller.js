@@ -12,10 +12,12 @@ router.post('/', (req, res) => {
 
   User
     .findByEmail(email)
+    // .findById(id)
     .then(user => {
       const isValidPassword = bcrypt.compareSync(password, user.password_digest)
       if (user && isValidPassword) {
-        req.session.userId = user.userId
+        req.session.userId = user.Id
+        console.log(req.session)
         res.json({ userName: user.name })
       }
     })
