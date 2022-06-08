@@ -1,4 +1,4 @@
-function renderAddItinerary() {
+function renderAddItinerary(tripId) {
   document.querySelector('#page').innerHTML = `
   <form onSubmit="createItinerary(event)">
       <h2>Add to your Itinerary</h2>
@@ -47,7 +47,7 @@ function renderAddItinerary() {
         <input type="text" name="checklist">
       </fieldset>
 
-      <input type="hidden" name="trip_id" value="1">
+      <input type="hidden" name="trip_id" value="${tripId}">
 
       <button>Add Itinerary</button>
     </form>

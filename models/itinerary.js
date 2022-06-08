@@ -1,10 +1,10 @@
 const db = require("../db/db")
 
 const Itinerary = {
-  findAll: () => {
-    const sql = 'SELECT trips.id AS trips_id, trips.name, itineraries.start_location, itineraries.end_location, itineraries.start_date, itineraries.end_date, itineraries.start_time, itineraries.end_time, itineraries.activities, itineraries.notes, itineraries.checklist FROM itineraries INNER JOIN trips ON trips.id = itineraries.trip_id'
+  findAll: (id) => {
+    const sql = 'SELECT trips.id AS trips_id, trips.name, itineraries.start_location, itineraries.end_location, itineraries.start_date, itineraries.end_date, itineraries.start_time, itineraries.end_time, itineraries.activities, itineraries.notes, itineraries.checklist FROM itineraries INNER JOIN trips ON trips.id = itineraries.trip_id WHERE trips.id = $1'
     return db
-    .query(sql)
+    .query(sql, [id])
     .then(dbRes => dbRes.rows)
   },
 

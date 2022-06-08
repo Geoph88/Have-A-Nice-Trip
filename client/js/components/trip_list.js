@@ -13,7 +13,7 @@ function renderTrips() {
     return state.trips.map(trip => `
     <section class='trip' data-id='${trip.id}'>
       <header>
-      <h2 onClick="renderItineraryList()">${trip.name}</h2>
+      <h2 onClick="renderItineraryList(${trip.id})">${trip.name}</h2>
         <span onClick="deleteTrip(event)">delete</span>
         <span onClick="renderEditTrip()">edit</span>
       </header>

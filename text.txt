@@ -1,0 +1,12 @@
+So we go through render trips and it makes sure that it shows on the page. We passed the trip.id into renderItinerayList function on line 19 which will list all of te itineraries. 
+
+That receives the tripId and it stores it in state on line 2. On like 18 we want the itinerry that for that trip. We fetch it in line 3.
+so we get the data and then when it comes back it with the itinarary data for that tri.Makes a request to the backend when it hits the ffetch request in line 20. That request grabs the tripId from the path and passing it in to findTheTrip function on line 10 in itineraries_controller.
+
+In model for itinerary.js where the the trip id is used to find all the itineraries for that trip in line 4 to 6. when that it's returned the database data is sent back to the itinerary_list.js and then we store it into state so we can map through them on line 26. That will display all of the itineraries on the page. 
+
+When the data in renderItinerary() has been called on line 3, we then load the itineraries and put them onto the page on line 6 - 13.
+
+If we were to click on add_itinerary, this file has the form for creating the itinerary. CreateItinerary function on line 55 gets run and that function takes the data from the form and then we make a post request to line 59 which sends a post request to itineraries_controller line 14 so that the tripId gets sent to the path/route. We grab the form data on line 15 to 16 in the router and send it to the create function in our model to create the itinerary
+
+Step 1 is making sure the step id is in the query, step 2 is catching it as a variable in the route and then step 3 is taking that tripId out the path Step 4 is us sending the data to the model, stop 5 is when we record that data in the database, we send the response back as json to the front end (add_itinerary.js). Once that gets pushed in on line 66, the renderItineraryList will render the itineraly list for the state.tripId again.

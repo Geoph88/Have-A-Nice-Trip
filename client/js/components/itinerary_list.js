@@ -1,7 +1,7 @@
-function renderItineraryList() {
+function renderItineraryList(tripId) {
   document.querySelector('#page').innerHTML = `
     <section class="itinerary-list">
-      <li onClick="renderAddItinerary()">Add itinerary</li>
+      <li onClick="renderAddItinerary(${tripId})">Add itinerary</li>
       ${renderItinerary()}
     </section>
   `
