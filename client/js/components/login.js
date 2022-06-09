@@ -27,7 +27,8 @@ function login(event) {
     body: JSON.stringify(data)
   })
     .then(res => res.json())
-    .then(userName => state.loggedInUserName = userName)
+    .then(userName => state.loggedInUserName = userName, 
+      )
     .then(() => {
       header()
       renderTripList()

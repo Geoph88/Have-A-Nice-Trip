@@ -47,8 +47,6 @@ function renderAddItinerary(tripId) {
         <input type="text" name="checklist">
       </fieldset>
 
-      <input type="hidden" name="trip_id" value="${tripId}">
-
       <button>Add Itinerary</button>
     </form>
   </section>

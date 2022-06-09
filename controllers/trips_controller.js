@@ -3,13 +3,13 @@ const router = express.Router()
 
 const Trip = require('../models/trip')
 
-router.get('/', (req, res) => {
+router.get('/:userId', (req, res) => {
   const userId = req.session.userId
   Trip.findAll(userId)
   .then(trips => res.json(trips)) 
 })
 
-router.post('/:id', (req, res) => {
+router.post('/:userId', (req, res) => {
   const userId = req.session.userId
   const {name, start_date, end_date} = req.body
   Trip

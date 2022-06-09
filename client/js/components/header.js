@@ -2,7 +2,7 @@ function header() {
     if (state.loggedInUserName) {
         document.querySelector('.header-nav').innerHTML = `
             <ul>
-                <li onClick="renderTripList()">Show Trips</li>
+                <li onClick="renderTripList(${state.loggedInUserName.userId})">Show Trips</li>
                 <li onClick="renderAddTrip()">Create Trip</li>
             </ul>
             <li onClick="logout(event)">Logout</li>
@@ -21,5 +21,5 @@ function logout(event) {
     event.preventDefault()
     state.loggedInUserName = false
     header()
-    return renderTripList()
+    renderTripList()
 }

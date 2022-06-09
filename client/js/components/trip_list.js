@@ -1,15 +1,39 @@
+// function renderTripList(userId) {
+//   state.loggedInUserName.userId = userId
+//   console.log(userId)
+//   document.querySelector('#page').innerHTML = `
+//     <section class="trip-list">
+//       ${renderTrips()}
+//     </section>
+//   `
+// }
 function renderTripList(userId) {
-  document.querySelector('#page').innerHTML = `
-    <section class="trip-list">
-      ${renderTrips(userId)}
-    </section>
-  `
+  userId = state.loggedInUserName.userId
+  console.log(userId)
+  renderTrips()
+  .then((trips) => {
+      if (state.loggedInUserName) {
+      console.log(state)
+      document.querySelector('#page').innerHTML = `
+      <section class="trip-list">
+        ${trips}
+      </section>
+    `
+      } else {
+        document.querySelector('#page').innerHTML = ''
+      }
+  })
 }
 
-function renderTrips(userId) {
-
-  if (state.loggedInUserName) {
-    console.log('logged in')
+function renderTrips() {
+  userId = state.loggedInUserName.userId
+  console.log(userId)
+  return fetch(`api/trips/${userId}`)
+  .then(res => res.json())
+  .then(trips => {
+    state.trips = trips
+  })
+  .then(() => {
     return state.trips.map(trip => `
     <section class='trip' data-id='${trip.id}'>
       <header>
@@ -21,15 +45,8 @@ function renderTrips(userId) {
       <p>${trip.end_date}</p>
     </section>
     `).join('')
-  } else {
-    console.log('not logged in')
-    console.log(state.trips)
-    return state.trips.map(trip => `
-    <section class='trip' data-id='${trip.id}'></section>
-    `).join('')
-  }
+  })
 }
-
 
 function renderEditTrip() {
   return state.trips.map(trip =>
@@ -82,6 +99,7 @@ function deleteTrip(event) {
   })
     .then(() => {
       state.trips = state.trips.filter(t => t.id != tripId)
-      renderTripList(userId)
+      renderTrips()
     })
 }
+

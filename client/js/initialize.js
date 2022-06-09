@@ -1,15 +1,14 @@
 const state = { 
   trips: [], 
-  itinerariesForTrip: []
+  itinerariesForTrip: [],
 }
 
-fetch('/api/trips')
+fetch('/api/trips/:userId')
   .then(res => res.json())
   .then(trips => {
     state.trips = trips
     header()
-
-  })
+})
 
 fetch('/api/itineraries/:tripId') 
   .then(res => res.json())
