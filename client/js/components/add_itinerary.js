@@ -66,6 +66,6 @@ function createItinerary(event) {
   .then(res => res.json())
   .then(itinerary => {
     state.itinerariesForTrip.push(itinerary)
-    renderItineraryList()
+    renderItineraryList(state.tripId)
   })
-}
+} 

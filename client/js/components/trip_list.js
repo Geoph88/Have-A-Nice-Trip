@@ -97,9 +97,16 @@ function deleteTrip(event) {
   fetch(`/api/trips/${tripId}`, {
     method: 'DELETE'
   })
-    .then(() => {
-      state.trips = state.trips.filter(t => t.id != tripId)
+      .then(() => {
+        state.trips = state.trips.filter(t => t.id != tripId)
       renderTrips()
+      .then((trips) => {
+        document.querySelector('#page').innerHTML = `
+        <section class="trip-list">
+          ${trips}
+        </section>
+      `
+      })
     })
 }
 
